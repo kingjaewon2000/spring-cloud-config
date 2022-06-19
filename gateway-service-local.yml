@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 8000
 
 spring:
   cloud:
@@ -81,7 +81,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://discovery-service:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 management:
   endpoints:
