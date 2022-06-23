@@ -56,7 +56,7 @@ spring:
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
         - id: product-service
-          uri: lb://USER-SERVICE
+          uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/product-service/**
           filters:
@@ -76,7 +76,7 @@ springdoc:
         url: /v3/api-docs/user
       - name: product
         url: /v3/api-docs/product
-        
+
 eureka:
   client:
     register-with-eureka: true
