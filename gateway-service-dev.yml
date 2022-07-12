@@ -87,6 +87,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:

@@ -80,6 +80,14 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/product-service/(?<segment>.*), /$\{segment}
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
@@ -94,6 +102,8 @@ springdoc:
         url: /v3/api-docs/user
       - name: product
         url: /v3/api-docs/product
+      - name: order
+        url: /v3/api-docs/order
 
 eureka:
   client:
