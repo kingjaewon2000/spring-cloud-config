@@ -77,7 +77,6 @@ spring:
           uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/product-service/wishs/**
-            - Method=POST,PUT,DELETE
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/product-service/(?<segment>.*), /$\{segment}
