@@ -83,19 +83,19 @@ spring:
         - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
-            - Path=/order-service/v3/api-docs/**
-            - Method=GET
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
-        - id: order-service
-          uri: lb://ORDER-SERVICE
-          predicates:
-            - Path=/order-service/**
+            - Path=/order-service/orders/**
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/order-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
