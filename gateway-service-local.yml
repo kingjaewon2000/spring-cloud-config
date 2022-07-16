@@ -67,6 +67,13 @@ spring:
         - id: product-service
           uri: lb://PRODUCT-SERVICE
           predicates:
+            - Path=/product-service/categories/{segment},/product-service/products,/product-service/products/{segment},/product-service/products/search,/product-service/wishs
+            - Method=GET
+          filters:
+            - RewritePath=/product-service/(?<segment>.*), /$\{segment}
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
             - Path=/product-service/products/**
             - Method=POST,PUT,DELETE
           filters:
