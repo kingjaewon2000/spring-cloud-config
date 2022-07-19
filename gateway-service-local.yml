@@ -143,6 +143,8 @@ springdoc:
         url: /v3/api-docs/user
       - name: product
         url: /v3/api-docs/product
+      - name: cart
+        url: /v3/api-docs/cart
       - name: order
         url: /v3/api-docs/order
 
