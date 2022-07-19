@@ -97,6 +97,22 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/product-service/(?<segment>.*), /$\{segment}
+        - id: cart-service
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/cart-service/cart/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/cart-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: cart-service
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/cart-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/cart-service/(?<segment>.*), /$\{segment}
         - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
@@ -119,7 +135,7 @@ spring:
             - Path=/v3/api-docs/**
           filters:
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}-service/v3/api-docs
-
+            
 springdoc:
   swagger-ui:
     urls:
