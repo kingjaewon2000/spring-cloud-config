@@ -100,7 +100,7 @@ spring:
         - id: cart-service
           uri: lb://CART-SERVICE
           predicates:
-            - Path=/cart-service/cart/**
+            - Path=/cart-service/carts/**
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/cart-service/(?<segment>.*), /$\{segment}
