@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test
-    username: sa
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://database:3306/saastyle?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: create
