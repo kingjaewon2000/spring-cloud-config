@@ -1,0 +1,10 @@
+server:
+  port: 0
+
+eureka:
+  client:
+    url: http://discovery-service:8761/eureka/
+
+app:
+  host: localhost
+  name: review-service
