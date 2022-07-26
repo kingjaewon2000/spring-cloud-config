@@ -133,6 +133,7 @@ spring:
           uri: lb://REVIEW-SERVICE
           predicates:
             - Path=/review-service/reviews/**
+            - Method=POST,PUT,DELETE
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/review-service/(?<segment>.*), /$\{segment}
