@@ -163,6 +163,8 @@ springdoc:
         url: /v3/api-docs/cart
       - name: order
         url: /v3/api-docs/order
+      - name: review
+        url: /v3/api-docs/review
         
 eureka:
   client:
