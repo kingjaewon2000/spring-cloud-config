@@ -181,7 +181,9 @@ springdoc:
         url: /v3/api-docs/order
       - name: review
         url: /v3/api-docs/review
-
+      - name: fitting
+        url: /swagger?format=openapi
+        
 eureka:
   client:
     register-with-eureka: true
