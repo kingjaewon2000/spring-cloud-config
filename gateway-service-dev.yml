@@ -145,6 +145,22 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/review-service/(?<segment>.*), /$\{segment}
+        - id: fitting-service
+          uri: lb://FITTING-SERVICE
+          predicates:
+            - Path=/fitting-service/fittings/**
+            - Method=POST,PUT,DELETE
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/fitting-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
+        - id: fitting-service
+          uri: lb://FITTING-SERVICE
+          predicates:
+            - Path=/fitting-service/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/fitting-service/(?<segment>.*), /$\{segment}
         - id: openapi
           uri: http://localhost:${server.port}
           predicates:
