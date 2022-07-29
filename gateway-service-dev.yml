@@ -26,14 +26,6 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/v3/api-docs/**
-            - Method=GET
-          filters:
-            - RemoveRequestHeader=Cookie
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
             - Path=/user-service/users,/user-service/users/login
             - Method=POST
           filters:
@@ -167,6 +159,14 @@ spring:
             - Path=/v3/api-docs/**
           filters:
             - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}-service/v3/api-docs
+        - id: prometheus
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/actuator/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             
 springdoc:
   swagger-ui:
