@@ -12,3 +12,9 @@ token:
 
 springdoc:
   version: v1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, busrefresh, info, prometheus, metrics
